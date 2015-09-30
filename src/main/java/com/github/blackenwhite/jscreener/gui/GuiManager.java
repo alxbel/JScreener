@@ -275,7 +275,8 @@ public class GuiManager extends JFrame {
 			message.delete(0, message.length());
 			doc.insertString(doc.getLength(), " ", doc.getStyle("prt_scr_icon"));
 			message.append(" to make a screenshot\n");
-			message.append("• Screenshots will be captured and saved in <DIRECTORY>\n\n");
+			message.append("• Screenshots will be captured and saved in <DIRECTORY>\n");
+			message.append("• To open directory, click on a textfield\n\n");
 			doc.insertString(doc.getLength(), message.toString(), doc.getStyle("regular"));
 
 			String copyright = "© 2015 Lex Blacken lexblacken@gmail.com";

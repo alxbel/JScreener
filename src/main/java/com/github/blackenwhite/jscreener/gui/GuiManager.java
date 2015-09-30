@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
+ * GuiManager controls config window and binds it to tray
  * Created on 28.09.2015.
  */
 public class GuiManager extends JFrame {
@@ -39,7 +40,7 @@ public class GuiManager extends JFrame {
 
 	private JTextPane helpMsg;
 
-	// This is for control Save button state
+	// This is for controlling Save button state
 	private String oldFilenameValue;
 
 
@@ -51,6 +52,7 @@ public class GuiManager extends JFrame {
 		// Init help message
 		initHelpMessage();
 
+		// Create ui elements
 		setTitle(CONFIG_MANAGER_TITLE);
 		setIconImage(tray.getTrayImage());
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -123,17 +125,10 @@ public class GuiManager extends JFrame {
 		JPanel scrNameTFPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
 		scrNameTF = new JTextField(SCR_NAME_TF_SIZE);
 		scrNameTF.setPreferredSize(new Dimension(0, 20));
-		scrNameTF.addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-			}
-
+		scrNameTF.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
+				super.keyReleased(e);
 				if (!scrNameTF.getText().equals(oldFilenameValue)) {
 					saveBtn.setEnabled(true);
 				} else {

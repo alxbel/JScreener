@@ -1,6 +1,5 @@
 package com.github.blackenwhite.jscreener;
 
-import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 
 /**
+ * Shared methods
  * Created on 29.09.2015.
  */
 public class Shared {
@@ -16,6 +16,10 @@ public class Shared {
 	public static final String FILENAME_MARK = "name";
 	public static final String SEPARATOR = "::";
 
+	/**
+	 * Reads config file and returns directory and filename values
+	 * @return directory and filename
+	 */
 	public static HashMap<String, String> readCfg() {
 		HashMap<String, String> data = new HashMap<>();
 
@@ -46,6 +50,11 @@ public class Shared {
 		return data;
 	}
 
+	/**
+	 * Writes new values from gui to config file
+	 * @param directory
+	 * @param filename
+	 */
 	public static void writeCfg(String directory, String filename) {
 		try {
 			File file = new File(CONFIG_FILE);
@@ -64,23 +73,5 @@ public class Shared {
 		} catch (IOException e) {
 			System.err.println(e);
 		}
-	}
-
-	/** Returns an ImageIcon, or null if the path was invalid. */
-	protected static ImageIcon createImageIcon(String path,
-											   String description) {
-		java.net.URL imgURL = Shared.class.getResource(path);
-		if (imgURL != null) {
-			return new ImageIcon(imgURL, description);
-		} else {
-			System.err.println("Couldn't find file: " + path);
-			return null;
-		}
-	}
-
-	public static void main(String[] args) {
-		readCfg();
-		writeCfg("dir111", "file1111");
-		readCfg();
 	}
 }

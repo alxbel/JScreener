@@ -55,7 +55,7 @@ public class App  {
 					}
 				});
 
-//				listenerThread.start();
+				listenerThread.start();
 				guiThread.start();
 			}
 		});
